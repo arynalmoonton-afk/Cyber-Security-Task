@@ -1,0 +1,29 @@
+{
+  "version": "2.6.2",
+  "release_version": "1.0.0",
+  "released_at": "",
+  "summary": {
+    "title": "STRIDE - Kasus B - Sistem Berbagi Dokumen",
+    "owner": "arynalmoonton-afk",
+    "description": "Sistem berbagi dokumen merupakan aplikasi web yang digunakan oleh organisasi untuk berbagi file dengan pengguna internal maupun eksternal. Pemilik dokumen dapat mengunggah file, membuat tautan berbagi dengan masa berlaku 24 jam, melihat tautan aktif, dan mencabut tautan sebelum kedaluwarsa. Metadata dokumen disimpan dalam Database Metadata, sedangkan isi file disimpan dalam Object Storage. Penerima dapat mengakses tautan tanpa login, sementara backend memproses permintaan unduhan dan mencatat aktivitas dalam audit log. Admin organisasi dapat melihat metadata dan audit log, tetapi tidak dapat melihat isi file secara default.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "DFD - Sistem Berbagi Dokumen",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [],
+        "description": "Diagram Data Flow (DFD) untuk memodelkan sistem berbagi dokumen melalui tautan sementara. Diagram menggambarkan aktor, proses backend, Database Metadata, Object Storage, aliran data, serta trust boundary antara pengguna publik, backend, dan penyimpanan. Pemodelan digunakan untuk mengidentifikasi ancaman keamanan menggunakan metode STRIDE."
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
