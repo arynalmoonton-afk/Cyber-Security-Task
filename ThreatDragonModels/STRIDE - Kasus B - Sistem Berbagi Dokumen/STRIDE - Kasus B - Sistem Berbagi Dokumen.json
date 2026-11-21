@@ -425,11 +425,13 @@
                 "text": "Database Metadata\n& Audit Log"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -526,13 +528,59 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "dfa0d7e8-58e8-4847-bd94-3b680d7a845e",
+                  "title": "Manipulasi Metadata Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Penyerang yang berhasil memperoleh akses tidak sah ke database dapat mengubah metadata dokumen, seperti nama dokumen, pemilik dokumen, hak akses, atau waktu kedaluwarsa tautan sementara. Perubahan tersebut dapat menyebabkan informasi dokumen menjadi tidak akurat dan memungkinkan penerima yang tidak berhak memperoleh akses terhadap dokumen.",
+                  "mitigation": "Menerapkan kontrol akses database berdasarkan hak pengguna, melakukan validasi data sebelum metadata disimpan atau diperbarui, menerapkan pemeriksaan integritas metadata, mencatat setiap perubahan dalam audit log, serta membatasi hak akses akun aplikasi terhadap database.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": "8"
+                },
+                {
+                  "id": "de5af757-93a4-4007-8c58-dc5f9896c612",
+                  "title": "Kebocoran Metadata dan Audit Log",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Penyerang yang berhasil memperoleh akses tidak sah ke database dapat mengubah metadata dokumen, seperti nama dokumen, pemilik dokumen, hak akses, atau waktu kedaluwarsa tautan sementara. Perubahan tersebut dapat menyebabkan informasi dokumen menjadi tidak akurat dan memungkinkan penerima yang tidak berhak memperoleh akses terhadap dokumen.",
+                  "mitigation": "Menerapkan kontrol akses database berdasarkan hak pengguna, melakukan validasi data sebelum metadata disimpan atau diperbarui, menerapkan pemeriksaan integritas metadata, mencatat setiap perubahan dalam audit log, serta membatasi hak akses akun aplikasi terhadap database.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "8"
+                },
+                {
+                  "id": "0d3c443a-a494-4542-975c-e1e3896504d2",
+                  "title": "Penghapusan Catatan Audit",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "enyerang yang memperoleh hak akses terhadap database dapat menghapus atau mengubah catatan audit yang merekam aktivitas pengguna, seperti pengunggahan, pengunduhan, dan perubahan dokumen. Kondisi ini dapat menghilangkan bukti aktivitas mencurigakan sehingga menyulitkan administrator dalam melakukan pelacakan dan investigasi insiden keamanan.",
+                  "mitigation": "Menerapkan mekanisme audit log yang bersifat append-only, membatasi hak akses untuk mengubah atau menghapus catatan audit, menyimpan salinan audit log pada lokasi penyimpanan terpisah, melakukan pencadangan audit log secara berkala, serta memantau setiap perubahan atau penghapusan catatan audit.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1109,8 +1157,8 @@
                 "text": "Backend Dokumen"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1207,12 +1255,99 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "90d1f165-28f6-448b-8682-eac59be79407",
+                  "title": "Pemalsuan Identitas Pengguna",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Penyerang dapat menyamar sebagai pengguna yang sah dengan menggunakan kredensial hasil pencurian untuk mengakses Backend Dokumen tanpa izin. Hal ini dapat menyebabkan akses tidak sah terhadap dokumen dan informasi pengguna.",
+                  "mitigation": "Menerapkan autentikasi multi-faktor (MFA), menggunakan mekanisme verifikasi identitas pengguna, menerapkan kebijakan kata sandi yang kuat, serta membatasi akses berdasarkan hak pengguna (Role-Based Access Control).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "7"
+                },
+                {
+                  "id": "1f15dfac-5e91-45c1-9010-fb5bbce14df6",
+                  "title": "Manipulasi Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Penyerang dapat mengubah, memodifikasi, atau mengganti isi dokumen yang tersimpan melalui Backend Dokumen tanpa izin. Hal ini dapat menyebabkan integritas dan keaslian dokumen terganggu.",
+                  "mitigation": "Penyerang dapat mengubah, memodifikasi, atau mengganti isi dokumen yang tersimpan melalui Backend Dokumen tanpa izin. Hal ini dapat menyebabkan integritas dan keaslian dokumen terganggu.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "8"
+                },
+                {
+                  "id": "d23ceeaf-ad79-4665-ab47-de9025389878",
+                  "title": "Penyangkalan Aktivitas Pengguna",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Pengguna dapat menyangkal telah melakukan aktivitas seperti mengunggah, mengunduh, atau membagikan dokumen karena sistem tidak memiliki pencatatan aktivitas yang memadai atau catatan audit dapat dimanipulasi.",
+                  "mitigation": "Menerapkan audit log yang mencatat identitas pengguna, waktu, jenis aktivitas, dan detail tindakan. Melindungi log dari perubahan atau penghapusan tanpa izin serta menggunakan sinkronisasi waktu server.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "6"
+                },
+                {
+                  "id": "ffc0bb32-587a-43bb-aa39-c756be7e780c",
+                  "title": "Kebocoran Dokumen dan Informasi",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Penyerang dapat memperoleh dan mengakses isi dokumen, metadata, serta informasi sensitif milik pengguna tanpa izin. Kebocoran dapat terjadi akibat lemahnya mekanisme kontrol akses atau penyalahgunaan tautan sementara untuk berbagi dokumen.",
+                  "mitigation": "Menerapkan enkripsi data saat penyimpanan dan pengiriman, membatasi akses berdasarkan hak pengguna, menggunakan token acak yang sulit ditebak pada tautan sementara, serta menerapkan masa berlaku dan pencabutan tautan secara otomatis.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "9"
+                },
+                {
+                  "id": "ecaf15cd-6b42-4772-911f-4b7a0e2edfb4",
+                  "title": "Gangguan Ketersediaan Layanan",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Penyerang mengirimkan permintaan secara berlebihan ke Backend Dokumen sehingga sumber daya server terbebani dan pengguna yang sah tidak dapat mengakses layanan berbagi dokumen.",
+                  "mitigation": "Menerapkan rate limiting, request validation, monitoring server, pembatasan jumlah permintaan, dan proteksi terhadap serangan Denial of Service.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "8"
+                },
+                {
+                  "id": "16671e72-deaf-4f8d-84aa-33f181c82692",
+                  "title": "Penyalahgunaan Hak Akses",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Pengguna dengan hak akses terbatas mengeksploitasi kelemahan sistem untuk memperoleh hak akses yang lebih tinggi, seperti mengakses dokumen milik pengguna lain atau menggunakan fungsi khusus administrator.",
+                  "mitigation": "Menerapkan Role-Based Access Control (RBAC), validasi otorisasi pada setiap permintaan, prinsip least privilege, serta pemeriksaan hak akses sebelum pengguna melakukan tindakan tertentu.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": "9"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 1,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -1323,6 +1458,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 9
   }
 }
