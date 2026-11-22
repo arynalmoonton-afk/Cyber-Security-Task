@@ -35,8 +35,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "14a7b238-f078-4a39-9f54-f6f458adbb96",
             "zIndex": -1,
+            "id": "14a7b238-f078-4a39-9f54-f6f458adbb96",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "                                    Trust Boundary",
@@ -44,14 +44,12 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "7c24b057-390e-4fce-9c3b-e05cfc774f9e",
-                "8877905b-6d31-4af5-8e48-dc27173d51a5",
                 "f142f9fb-0a05-4441-9b39-108be2c99e31",
                 "0074c13f-2ba2-4b93-8db6-97347f700550",
-                "a201d481-507f-4a32-ba3a-c6499323344b",
                 "c54929f9-67e7-4dda-b393-c1956f5daa31",
-                "3f76b52a-00af-49a1-9349-f17e5a73bb86",
-                "f24cb37c-d91d-44eb-a5a4-c59bfb9952b1"
+                "8877905b-6d31-4af5-8e48-dc27173d51a5",
+                "a201d481-507f-4a32-ba3a-c6499323344b",
+                "3f76b52a-00af-49a1-9349-f17e5a73bb86"
               ],
               "containedElements": [
                 "90586e4f-332f-4adf-855f-c11f1ae39c26",
@@ -62,8 +60,8 @@
           },
           {
             "position": {
-              "x": -490,
-              "y": 485
+              "x": -500,
+              "y": 480
             },
             "size": {
               "width": 112.5,
@@ -74,13 +72,14 @@
                 "text": "Pemilik Dokumen"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -164,7 +163,6 @@
               ]
             },
             "id": "7fff7236-f01f-48f6-b169-f7cd4e7d08f1",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Pemilik Dokumen",
@@ -172,15 +170,59 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "63eacf8e-4295-43ad-bde8-dfaf0d378583",
+                  "title": "Pemalsuan Identitas Pemilik Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Penyerang dapat menyamar sebagai pemilik dokumen dengan menggunakan kredensial yang dicuri atau diperoleh secara tidak sah. Hal ini memungkinkan penyerang mengunggah, mengakses, atau membagikan dokumen tanpa sepengetahuan pemilik yang sebenarnya.",
+                  "mitigation": "Menerapkan autentikasi multifaktor (MFA), menggunakan kebijakan kata sandi yang kuat, melakukan verifikasi identitas pengguna, serta menerapkan pembatasan akses berdasarkan hak pengguna.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": "7"
+                },
+                {
+                  "id": "b4ea99e0-c1c3-4aca-a142-1b8b6760edcc",
+                  "title": "Pemalsuan Aktivitas Unggah Dokumen",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Pemilik dokumen dapat menyangkal pernah melakukan aktivitas pengunggahan dokumen apabila sistem tidak memiliki bukti pencatatan aktivitas yang memadai. Hal ini dapat menyulitkan proses penelusuran ketika terjadi sengketa atau penyalahgunaan dokumen.",
+                  "mitigation": "Mencatat setiap aktivitas pengunggahan dengan identitas pengguna, waktu, dan detail dokumen. Melindungi audit log dari perubahan atau penghapusan tanpa izin serta memastikan catatan aktivitas dapat ditelusuri kembali.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": "6"
+                },
+                {
+                  "id": "86105ce5-e497-46d0-a713-8cc4b7d1eaf3",
+                  "title": "Penyangkalan Keaslian Dokumen",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Pemilik dokumen dapat menyangkal bahwa dokumen yang diunggah berasal dari dirinya apabila sistem tidak memiliki bukti autentikasi dan pencatatan aktivitas pengunggahan yang memadai",
+                  "mitigation": "Mencatat identitas pemilik, waktu pengunggahan, dan identitas dokumen dalam audit log serta menyimpan bukti aktivitas agar dapat ditelusuri kembali",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": "6"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 2
+              }
             }
           },
           {
             "position": {
               "x": -490,
-              "y": 620
+              "y": 615
             },
             "size": {
               "width": 112.5,
@@ -191,13 +233,14 @@
                 "text": "Penerima\nEksternal"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -281,7 +324,6 @@
               ]
             },
             "id": "54953be8-35b2-450f-885b-a99b6ef0c39d",
-            "zIndex": 2,
             "data": {
               "type": "tm.Actor",
               "name": "Penerima\nEksternal",
@@ -289,15 +331,59 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "322f9b78-cb65-4fb2-8f29-c28f2f00f8a5",
+                  "title": "Pemalsuan Identitas Penerima",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Penyerang dapat menyamar sebagai penerima eksternal dengan menggunakan tautan unduhan yang diperoleh secara tidak sah atau memanipulasi identitas penerima. Hal ini dapat menyebabkan dokumen diakses oleh pihak yang tidak berhak",
+                  "mitigation": "Menerapkan verifikasi identitas penerima, menggunakan tautan unduhan yang unik dan memiliki masa berlaku, serta memastikan setiap permintaan unduhan divalidasi oleh sistem",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": "8"
+                },
+                {
+                  "id": "819f81d2-033a-45e2-aa08-118ffd9dc02a",
+                  "title": "Penyangkalan Aktivitas Unduhan",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "enerima eksternal dapat menyangkal pernah mengunduh dokumen apabila sistem tidak memiliki pencatatan aktivitas unduhan yang memadai. Hal ini dapat menyulitkan organisasi dalam menelusuri pihak yang telah mengakses dokumen",
+                  "mitigation": "- Mencatat setiap aktivitas unduhan yang mencakup identitas penerima, waktu akses, alamat IP, dan dokumen yang diunduh serta melindungi audit log dari perubahan tanpa izin",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": "6"
+                },
+                {
+                  "id": "5587a7ae-f0d6-4606-beb3-f7986474d3e2",
+                  "title": "Penyangkalan Aktivitas Administrator",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Administrator dapat menyangkal pernah melakukan aktivitas pengelolaan dokumen atau mengakses metadata dan audit log apabila sistem tidak memiliki pencatatan aktivitas yang memadai. Hal ini dapat menyulitkan proses investigasi ketika terjadi penyalahgunaan hak administrator",
+                  "mitigation": "Mencatat seluruh aktivitas administrator, termasuk identitas, waktu, jenis tindakan, dan objek yang diakses. Melindungi audit log dari perubahan atau penghapusan tanpa izin serta melakukan pemantauan aktivitas administrator secara berkala",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": "7"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 2
+              }
             }
           },
           {
             "position": {
-              "x": -490,
-              "y": 760
+              "x": -500,
+              "y": 750
             },
             "size": {
               "width": 112.5,
@@ -308,13 +394,14 @@
                 "text": "Admin Organisasi"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -398,7 +485,6 @@
               ]
             },
             "id": "00facb8d-118c-44f3-be6d-492ea942929d",
-            "zIndex": 3,
             "data": {
               "type": "tm.Actor",
               "name": "Admin Organisasi",
@@ -406,15 +492,33 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "4beb8997-a061-4749-93b4-9d9245eddf24",
+                  "title": "Pemalsuan Identitas Administrator",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Penyerang dapat menyamar sebagai administrator dengan menggunakan kredensial yang dicuri atau diperoleh secara tidak sah. Hal ini memungkinkan penyerang mengakses informasi metadata, audit log, atau fungsi pengelolaan dokumen yang seharusnya hanya dapat dilakukan oleh administrator",
+                  "mitigation": "Menerapkan autentikasi multifaktor (MFA), menggunakan kata sandi yang kuat, membatasi akses administrator berdasarkan hak istimewa, serta memantau aktivitas login administrator",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": "9"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
             "position": {
-              "x": 135,
-              "y": 540
+              "x": 130,
+              "y": 555
             },
             "size": {
               "width": 160,
@@ -437,6 +541,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -520,7 +625,6 @@
               ]
             },
             "id": "90586e4f-332f-4adf-855f-c11f1ae39c26",
-            "zIndex": 5,
             "data": {
               "type": "tm.Store",
               "name": "Database Metadata\n& Audit Log",
@@ -573,69 +677,41 @@
                   "new": false,
                   "number": 9,
                   "score": "8"
+                },
+                {
+                  "id": "9a9096a0-89da-4171-9a28-f9ddb98bfc05",
+                  "title": "Gangguan Akses Database",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Penyerang dapat mengirimkan permintaan atau menjalankan query dalam jumlah berlebihan sehingga penggunaan sumber daya database meningkat secara tidak terkendali. Kondisi tersebut dapat menyebabkan database menjadi lambat atau tidak dapat diakses, sehingga Backend Dokumen mengalami gangguan ketika membaca maupun menyimpan metadata dan audit log.",
+                  "mitigation": "Membatasi jumlah permintaan yang dapat diproses dalam periode tertentu, mengoptimalkan query database, menerapkan pemantauan performa database secara berkala, menggunakan mekanisme backup dan recovery, serta membatasi koneksi database yang berjalan secara bersamaan.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": "7"
+                },
+                {
+                  "id": "5d56d379-cc0f-444b-acc5-4e969db86b77",
+                  "title": "enyangkalan Aktivitas pada Database",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Pengguna atau pihak yang memiliki akses ke sistem dapat menyangkal aktivitas yang dilakukan terhadap database, seperti melihat, mengubah, atau mengakses metadata dokumen. Hal ini dapat terjadi apabila pencatatan aktivitas pada audit log tidak lengkap atau tidak mencatat identitas pengguna dan waktu aktivitas secara akurat, sehingga menyulitkan administrator dalam melakukan pelacakan dan pembuktian insiden keamanan.",
+                  "mitigation": "Mencatat seluruh aktivitas penting pada database ke dalam audit log, menyertakan identitas pengguna dan timestamp pada setiap aktivitas, melindungi audit log dari perubahan atau penghapusan tanpa izin, melakukan sinkronisasi waktu sistem, serta memeriksa catatan audit secara berkala.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": "6"
                 }
               ],
               "threatFrequency": {
                 "tampering": 2,
-                "repudiation": 0,
+                "repudiation": 1,
                 "informationDisclosure": 1,
-                "denialOfService": 0
+                "denialOfService": 1
               }
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Simpan Metadata\ndan Audit Log.",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "14a7b238-f078-4a39-9f54-f6f458adbb96"
-              ]
-            },
-            "labels": [
-              "Simpan Metadata\ndan Audit Log."
-            ],
-            "id": "7c24b057-390e-4fce-9c3b-e05cfc774f9e",
-            "source": {
-              "x": 0,
-              "y": 670
-            },
-            "target": {
-              "cell": "90586e4f-332f-4adf-855f-c11f1ae39c26",
-              "port": "0b6f3323-dd57-4251-9c52-e184adb2901d"
-            },
-            "vertices": [
-              {
-                "x": 0,
-                "y": 565
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -742,60 +818,6 @@
               {
                 "x": -20,
                 "y": 800
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Permintaan Unduh",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "14a7b238-f078-4a39-9f54-f6f458adbb96"
-              ]
-            },
-            "labels": [
-              "Permintaan Unduh"
-            ],
-            "id": "8877905b-6d31-4af5-8e48-dc27173d51a5",
-            "source": {
-              "x": -377,
-              "y": 650
-            },
-            "target": {
-              "cell": "81a537e2-a262-4397-a789-7e489781c359",
-              "port": "51a89d5e-d38c-40b6-93ef-31c7cebd4020"
-            },
-            "vertices": [
-              {
-                "x": -270,
-                "y": 670
               }
             ]
           },
@@ -927,6 +949,114 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "Informasi Metadata\ndan Audit Log",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "14a7b238-f078-4a39-9f54-f6f458adbb96"
+              ]
+            },
+            "labels": [
+              "Informasi Metadata\ndan Audit Log"
+            ],
+            "id": "c54929f9-67e7-4dda-b393-c1956f5daa31",
+            "source": {
+              "cell": "81a537e2-a262-4397-a789-7e489781c359",
+              "port": "1eec94cc-b346-4d0b-b164-b0974bef831b"
+            },
+            "target": {
+              "cell": "00facb8d-118c-44f3-be6d-492ea942929d",
+              "port": "4d4ea213-66f3-4535-8d3a-20f2b2a81d01"
+            },
+            "vertices": [
+              {
+                "x": -270,
+                "y": 920
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Permintaan Unduh",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "14a7b238-f078-4a39-9f54-f6f458adbb96"
+              ]
+            },
+            "labels": [
+              "Permintaan Unduh"
+            ],
+            "id": "8877905b-6d31-4af5-8e48-dc27173d51a5",
+            "source": {
+              "cell": "54953be8-35b2-450f-885b-a99b6ef0c39d",
+              "port": "02c7d4a5-bae5-45cf-9bca-549f23efa13d"
+            },
+            "target": {
+              "cell": "81a537e2-a262-4397-a789-7e489781c359",
+              "port": "51a89d5e-d38c-40b6-93ef-31c7cebd4020"
+            },
+            "vertices": [
+              {
+                "x": -270,
+                "y": 670
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "Permintaan Metadata\ndan Audit Log",
               "description": "",
               "outOfScope": false,
@@ -947,8 +1077,8 @@
             ],
             "id": "a201d481-507f-4a32-ba3a-c6499323344b",
             "source": {
-              "x": -377,
-              "y": 795
+              "cell": "00facb8d-118c-44f3-be6d-492ea942929d",
+              "port": "02c7d4a5-bae5-45cf-9bca-549f23efa13d"
             },
             "target": {
               "cell": "81a537e2-a262-4397-a789-7e489781c359",
@@ -985,7 +1115,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Informasi Metadata\ndan Audit Log",
+              "name": "Simpan Metadata\ndan Audit Log.",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -996,33 +1126,35 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "14a7b238-f078-4a39-9f54-f6f458adbb96"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
-              "Informasi Metadata\ndan Audit Log"
+              "Simpan Metadata\ndan Audit Log."
             ],
-            "id": "c54929f9-67e7-4dda-b393-c1956f5daa31",
+            "id": "7c24b057-390e-4fce-9c3b-e05cfc774f9e",
             "source": {
               "cell": "81a537e2-a262-4397-a789-7e489781c359",
-              "port": "1eec94cc-b346-4d0b-b164-b0974bef831b"
+              "port": "c2a354a2-ba78-4157-8234-81a842069f2f"
             },
             "target": {
-              "cell": "00facb8d-118c-44f3-be6d-492ea942929d",
-              "port": "4d4ea213-66f3-4535-8d3a-20f2b2a81d01"
+              "cell": "90586e4f-332f-4adf-855f-c11f1ae39c26",
+              "port": "0b6f3323-dd57-4251-9c52-e184adb2901d"
             },
             "vertices": [
               {
-                "x": -270,
-                "y": 920
+                "x": 0,
+                "y": 565
+              },
+              {
+                "x": 40,
+                "y": 565
               }
             ]
           },
           {
             "position": {
-              "x": 145,
-              "y": 785
+              "x": 135,
+              "y": 775
             },
             "size": {
               "width": 150,
@@ -1033,16 +1165,19 @@
                 "text": "Object Storage"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -1126,7 +1261,6 @@
               ]
             },
             "id": "5392350e-dc74-4b1c-89e8-a1a617db9498",
-            "zIndex": 11,
             "data": {
               "type": "tm.Store",
               "name": "Object Storage",
@@ -1134,19 +1268,91 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "6ab7075c-7b67-4062-a5fd-0e80c102a5a8",
+                  "title": "Manipulasi File Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Penyerang dapat mengubah atau memodifikasi file dokumen yang tersimpan di Object Storage tanpa izin dari pemilik dokumen. Manipulasi tersebut dapat menyebabkan dokumen yang diunduh oleh penerima tidak lagi sesuai dengan file asli yang diunggah, sehingga mengganggu keaslian dan integritas dokumen.",
+                  "mitigation": "Menerapkan mekanisme pemeriksaan integritas file menggunakan hash seperti SHA-256, membatasi hak akses terhadap Object Storage, mengenkripsi file selama penyimpanan dan pengiriman, menerapkan kontrol autentikasi dan otorisasi, serta mencatat setiap aktivitas perubahan file dalam audit log.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": "8"
+                },
+                {
+                  "id": "885d00c4-8c4c-4903-87d4-89b44da3fd63",
+                  "title": "Kebocoran File Dokumen",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Penyerang dapat memperoleh akses tidak sah terhadap file dokumen yang tersimpan di Object Storage akibat lemahnya pengaturan hak akses atau konfigurasi penyimpanan. Kondisi ini dapat menyebabkan dokumen rahasia diakses atau diunduh oleh pihak yang tidak berwenang, sehingga mengakibatkan kebocoran informasi pemilik dokumen maupun isi dokumen.",
+                  "mitigation": "Menerapkan kontrol akses berbasis peran (RBAC), memastikan setiap permintaan akses file melalui proses autentikasi dan otorisasi, mengenkripsi file saat disimpan dan dikirim, membatasi akses Object Storage hanya kepada pihak yang berwenang, serta melakukan pemeriksaan konfigurasi keamanan penyimpanan secara berkala.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": "9"
+                },
+                {
+                  "id": "a5f1cde2-082c-4066-a288-e4197ae0d604",
+                  "title": "Penghapusan File Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Penyerang dapat menghapus file dokumen yang tersimpan di Object Storage tanpa izin dari pemilik dokumen atau administrator. Tindakan tersebut dapat menyebabkan dokumen tidak dapat diakses atau diunduh oleh penerima yang berhak, sehingga mengganggu ketersediaan dan keutuhan data dalam sistem berbagi dokumen.",
+                  "mitigation": "Membatasi hak akses penghapusan file berdasarkan peran pengguna, menerapkan autentikasi dan otorisasi sebelum setiap tindakan penghapusan, menggunakan mekanisme versioning dan backup untuk memulihkan file yang terhapus, serta mencatat setiap aktivitas penghapusan dalam audit log.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": "8"
+                },
+                {
+                  "id": "5dff2d20-3d13-423b-bbd4-34e83f64d308",
+                  "title": "Gangguan Ketersediaan File Dokumen",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Penyerang dapat melakukan serangan dengan mengirimkan permintaan akses secara berlebihan ke Object Storage sehingga membebani sumber daya penyimpanan. Kondisi ini dapat menyebabkan layanan penyimpanan menjadi lambat atau tidak dapat diakses, sehingga pengguna yang sah mengalami kesulitan dalam mengunduh dokumen yang dibagikan melalui tautan sementara.",
+                  "mitigation": "Menerapkan pembatasan jumlah permintaan akses (rate limiting), memantau penggunaan sumber daya Object Storage, membatasi akses berdasarkan autentikasi dan otorisasi, menerapkan perlindungan terhadap serangan Denial of Service, serta menyediakan mekanisme backup dan pemulihan data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": "7"
+                },
+                {
+                  "id": "7168a100-5915-405c-94e3-a003b5e32421",
+                  "title": "Penyangkalan Aktivitas Pengelolaan File",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Pengguna atau pihak yang memiliki akses ke Object Storage dapat menyangkal aktivitas yang dilakukan terhadap file dokumen, seperti mengunggah, mengunduh, atau menghapus file. Hal ini dapat terjadi apabila sistem tidak mencatat aktivitas pengguna secara lengkap, sehingga administrator kesulitan mengidentifikasi pihak yang bertanggung jawab ketika terjadi insiden keamanan.",
+                  "mitigation": "Mencatat seluruh aktivitas pengelolaan file dalam audit log, menyertakan identitas pengguna dan timestamp pada setiap aktivitas, melindungi catatan audit dari perubahan atau penghapusan tanpa izin, serta melakukan pemeriksaan log secara berkala.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": "6"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 1
+              }
             }
           },
           {
             "position": {
-              "x": -184,
-              "y": 580
+              "x": -200,
+              "y": 570
             },
             "size": {
               "width": 170,
@@ -1164,6 +1370,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 12,
             "ports": {
               "groups": {
                 "top": {
@@ -1247,7 +1454,6 @@
               ]
             },
             "id": "81a537e2-a262-4397-a789-7e489781c359",
-            "zIndex": 12,
             "data": {
               "type": "tm.Process",
               "name": "Backend Dokumen",
@@ -1435,17 +1641,15 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "14a7b238-f078-4a39-9f54-f6f458adbb96"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "Data Metadata\ndan Audit Log"
             ],
             "id": "f24cb37c-d91d-44eb-a5a4-c59bfb9952b1",
             "source": {
-              "x": 220,
-              "y": 610
+              "cell": "90586e4f-332f-4adf-855f-c11f1ae39c26",
+              "port": "a152edb6-bf51-4651-a32a-9daa8e49086f"
             },
             "target": {
               "cell": "81a537e2-a262-4397-a789-7e489781c359",
@@ -1458,6 +1662,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 9
+    "threatTop": 23
   }
 }
