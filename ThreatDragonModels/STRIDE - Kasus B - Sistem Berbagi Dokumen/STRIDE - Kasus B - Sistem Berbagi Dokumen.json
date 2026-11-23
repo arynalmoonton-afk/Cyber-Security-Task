@@ -1906,7 +1906,7 @@
         "description": "Diagram Data Flow (DFD) untuk memodelkan sistem berbagi dokumen melalui tautan sementara. Diagram menggambarkan aktor, proses backend, Database Metadata, Object Storage, aliran data, serta trust boundary antara pengguna publik, backend, dan penyimpanan. Pemodelan digunakan untuk mengidentifikasi ancaman keamanan menggunakan metode STRIDE."
       }
     ],
-    "diagramTop": 2,
+    "diagramTop": 5,
     "reviewer": "",
     "threatTop": 35
   }
