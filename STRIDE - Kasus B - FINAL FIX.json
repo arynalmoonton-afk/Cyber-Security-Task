@@ -4,7 +4,7 @@
   "released_at": "",
   "summary": {
     "title": "STRIDE - Kasus B - Sistem Berbagi Dokumen",
-    "owner": "arynalmoonton-afk",
+    "owner": "ARYNAL HAQ SYAFI'I",
     "description": "Model STRIDE Kasus B: pemilik mengunggah dokumen, membuat tautan berbagi berlaku 24 jam, melihat tautan aktif dan mencabutnya; penerima mengakses tanpa login; backend memvalidasi token, masa berlaku, dan status pencabutan pada setiap permintaan akses. Metadata dan audit log disimpan di Database Metadata, sedangkan isi file disimpan terpisah di Object Storage. Admin dapat melihat metadata dan audit log, bukan isi file secara default.\n\nAsumsi pemodelan: (1) pemilik dokumen dan admin telah melakukan autentikasi sebelum menggunakan fungsi masing-masing; (2) penerima eksternal tidak login sehingga token tautan menjadi kredensial akses (bearer link); (3) token dibuat secara acak dan unik serta berlaku 24 jam sejak dibuat; (4) backend memvalidasi token, masa berlaku, dan status pencabutan pada setiap permintaan unduhan; (5) Object Storage bersifat privat dan file hanya diambil atau disimpan melalui backend; (6) audit log mencatat waktu, jenis aktivitas, ID dokumen/tautan, aktor terautentikasi bila tersedia, dan hasil aktivitas; (7) identitas personal penerima anonim tidak dianggap terverifikasi.",
     "id": 0
   },
