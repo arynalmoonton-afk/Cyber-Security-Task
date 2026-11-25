@@ -9,7 +9,14 @@
     "id": 0
   },
   "detail": {
-    "contributors": [],
+    "contributors": [
+      {
+        "name": "CHARTIKA JENYANSA PANGARIBUAN"
+      },
+      {
+        "name": "ALEXANDRIA FEBRIANTI KRISNA PUTRI"
+      }
+    ],
     "diagrams": [
       {
         "id": 0,
